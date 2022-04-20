@@ -14,7 +14,7 @@ jobs:
       - name: Run extract JSON
         run: |
           id=$(jq '.id' output.json)
-          if [[$id -eq 2]]
+          if [[ $id -eq 1 ]]
           then
             echo ok
           else
