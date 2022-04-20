@@ -14,7 +14,12 @@ jobs:
       - name: Run extract JSON
         run: |
           id=$(jq '.id' output.json)
-          if [[$id -eq 2]] then echo ok; else echo fail; fi;
+          if [[$id -eq 2]]
+          then
+            echo ok
+          else
+            echo fail
+          fi
   lint:
     runs-on: ubuntu-latest
     steps:
