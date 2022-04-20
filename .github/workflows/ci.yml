@@ -8,7 +8,7 @@ jobs:
      steps:
       - uses: actions/checkout@v3
       - name: Run install JQ
-        run: apt install -y jq
+        run: sudo apt install -y jq
       - name: Run get all contacts
         run: curl https://my-json-server.typicode.com/hadihammurabi/flutter-webservice/contacts >> output.json
       - name: Run extract JSON
