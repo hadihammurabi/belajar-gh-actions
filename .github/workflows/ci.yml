@@ -7,12 +7,12 @@ jobs:
      runs-on: ubuntu-latest
      steps:
       - uses: actions/checkout@v3
-      - name: Run a one line-script
-        run: curl https://my-json-server.typicode.com/hadihammurabi/flutter-webservice/contacts
-      - name: Run a multi-line script
-        run: |
-          echo Hello world! Multiline.
-          echo Hello, world: Multiline again.
+      - name: Run install JQ
+        run: apt install -y jq
+      - name: Run get all contacts
+        run: curl https://my-json-server.typicode.com/hadihammurabi/flutter-webservice/contacts >> output.json
+      - name: Run extract JSON
+        run: jq '.' output.json
   lint:
     runs-on: ubuntu-latest
     steps:
