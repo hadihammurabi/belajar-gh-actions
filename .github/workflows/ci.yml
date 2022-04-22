@@ -3,6 +3,19 @@ on:
   push:
     branches: [ master ]
 jobs:
+  test:
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v3
+    - name: Use Node.js
+      uses: actions/setup-node@v1
+      with:
+        node-version: 16.14.2
+    - name: Run npm install
+      run: npm install
+    - name: Run npm test
+      run: npm test
+    
   report:
     runs-on: ubuntu-latest
     steps:
