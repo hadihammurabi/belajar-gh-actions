@@ -4,32 +4,26 @@ on:
     branches: [ master ]
 jobs:
   test:
-     runs-on: ubuntu-latest
-     steps:
-      - uses: actions/checkout@v3
-      - name: Run install JQ
-        run: sudo apt install -y jq
-      - name: Run get all contacts
-        run: curl https://my-json-server.typicode.com/hadihammurabi/flutter-webservice/contacts/1 >> output.json
-      - name: Run extract JSON
-        run: |
-          id=$(jq '.id' output.json)
-          if [[ $id -eq 1 ]]
-          then
-            echo ok
-          else
-            echo fail
-          fi
-  lint:
-    runs-on: ubuntu-latest
-    steps:
-    - uses: actions/checkout@v3
-    - name: Run a one-line script
-      run: echo Hello, world!
-      
-  static:
-    runs-on: ubuntu-latest
-    steps:
-    - uses: actions/checkout@v3
-    - name: Run a one-line script
-      run: echo Hello world!
+  - uses: actions/checkout@v3
+  - name: Run JMeter Tests
+    uses: rbhadti94/apache-jmeter-action@v0.5.0
+    with:
+      testFilePath: ReqResIn.jmx
+      outputReportsFolder: reports/
+  # test:
+  #    runs-on: ubuntu-latest
+  #    steps:
+  #     - uses: actions/checkout@v3
+  #     - name: Run install JQ
+  #       run: sudo apt install -y jq
+  #     - name: Run get all contacts
+  #       run: curl https://my-json-server.typicode.com/hadihammurabi/flutter-webservice/contacts/1 >> output.json
+  #     - name: Run extract JSON
+  #       run: |
+  #         id=$(jq '.id' output.json)
+  #         if [[ $id -eq 1 ]]
+  #         then
+  #           echo ok
+  #         else
+  #           echo fail
+  #         fi
