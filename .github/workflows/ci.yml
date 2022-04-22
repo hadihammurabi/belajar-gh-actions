@@ -12,6 +12,11 @@ jobs:
       with:
         testFilePath: ReqResIn.jmx
         outputReportsFolder: reports/
+    - uses: actions/upload-artifact@v1
+      with:
+        name: jmeter-test-results
+        path: reports/
+
   # test:
   #    runs-on: ubuntu-latest
   #    steps:
